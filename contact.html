@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="scifi">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Telecomnet Solutions — Contact</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
+.contact-info-block{display:flex;flex-direction:column;gap:1.2rem}
+.ci-row{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.4rem;border:1px solid var(--border);background:var(--card);transition:border-color .25s}
+[data-theme="blueprint"] .ci-row{background:#fff}
+.ci-row:hover{border-color:var(--a1)}
+.ci-icon-box{width:36px;height:36px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.ci-lbl{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--a1);margin-bottom:.28rem}
+.ci-val{font-size:.92rem;color:var(--muted)}
+.ci-val a{color:var(--muted);text-decoration:none;transition:color .2s}
+.ci-val a:hover{color:var(--a1)}
+.form-success{display:none;padding:1.2rem 1.5rem;border:1px solid var(--a1);background:rgba(0,0,0,.03);text-align:center}
+[data-theme="scifi"] .form-success{background:rgba(0,245,255,.04)}
+[data-theme="premium"] .form-success{background:rgba(244,124,32,.04)}
+.form-success p{color:var(--a1);font-family:'Orbitron',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em}
+.map-box{border:1px solid var(--border);overflow:hidden;margin-top:1.5rem;height:200px;background:var(--card);display:flex;align-items:center;justify-content:center;position:relative}
+[data-theme="blueprint"] .map-box{background:#e8eeff}
+.map-label{font-family:'Orbitron',monospace;font-size:.65rem;font-weight:700;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
+.map-pulse{width:14px;height:14px;border-radius:50%;background:var(--a1);position:relative;margin-right:10px;flex-shrink:0}
+.map-pulse::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--a1);opacity:.4;animation:mapRing 1.5s ease-out infinite}
+@keyframes mapRing{from{transform:scale(1);opacity:.4}to{transform:scale(2.2);opacity:0}}
+.offices-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1rem}
+.office-card{padding:1.4rem;border:1px solid var(--border);background:var(--card);position:relative;overflow:hidden}
+[data-theme="blueprint"] .office-card{background:#fff}
+.office-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--a1),var(--a2));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.office-card:hover::before{transform:scaleX(1)}
+.office-flag{font-size:1.3rem;display:block;margin-bottom:.5rem}
+.office-card h3{font-size:.78rem;margin-bottom:.4rem}
+.office-card p{font-size:.82rem;line-height:1.6}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-top:1rem}
+.faq-item{background:var(--card);overflow:hidden}
+[data-theme="blueprint"] .faq-item{background:#fff}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:1.1rem 1.4rem;font-family:'Chakra Petch',monospace;font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .2s}
+.faq-q:hover{color:var(--a1)}
+.faq-q span{color:var(--a1);font-size:1rem;transition:transform .3s}
+.faq-q.open span{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+.faq-a.open{max-height:200px;padding:0 1.4rem 1.1rem}
+.faq-a p{font-size:.88rem;line-height:1.68}
+@media(max-width:900px){
+  .contact-grid,.offices-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="bgcanvas"></canvas>
+<div id="theme-toast"></div>
+<div class="theme-dots">
+  <div class="tdot" data-t="scifi"></div>
+  <div class="tdot" data-t="blueprint"></div>
+  <div class="tdot" data-t="premium"></div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo">TELECOM<span>NET</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active-link">Contact</a></li>
+  </ul>
+  <a href="mailto:marketing@telecomnetsolution.com" class="nav-cta">Email Us</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="ph-eyebrow">Reach Out</div>
+  <h1><span class="h1-grad">Get in Touch</span></h1>
+  <p>Building a new platform? Modernizing legacy infrastructure? Exploring AI integration for your telecom stack? Let's talk. Our team typically responds within 24 hours.</p>
+</div>
+
+<div class="ticker"><div class="t-inner"><span class="t-item">Response within 24hrs</span><span class="t-sep">◆</span><span class="t-item">India Operations</span><span class="t-sep">◆</span><span class="t-item">Africa Deployments</span><span class="t-sep">◆</span><span class="t-item">24/7 Support</span><span class="t-sep">◆</span><span class="t-item">Free Project Consultation</span><span class="t-sep">◆</span><span class="t-item">Response within 24hrs</span><span class="t-sep">◆</span><span class="t-item">India Operations</span><span class="t-sep">◆</span><span class="t-item">Africa Deployments</span><span class="t-sep">◆</span><span class="t-item">24/7 Support</span><span class="t-sep">◆</span><span class="t-item">Free Project Consultation</span><span class="t-sep">◆</span></div></div>
+
+<!-- CONTACT FORM + INFO -->
+<section>
+  <div class="contact-grid">
+    <!-- FORM -->
+    <div>
+      <div class="sec-tag">Send a Message</div>
+      <h2>Start the Conversation</h2>
+      <p class="sec-sub" style="margin-bottom:1.8rem">Tell us about your project and we'll respond with a tailored technical proposal — no generic sales pitches.</p>
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input type="text" placeholder="First Name" required/>
+          <input type="text" placeholder="Last Name" required/>
+        </div>
+        <input type="email" placeholder="Work Email Address" required/>
+        <input type="text" placeholder="Company / Organisation"/>
+        <input type="text" placeholder="Country / Region"/>
+        <select>
+          <option value="" disabled selected style="color:#999">Service Interested In</option>
+          <option>AI-Powered M-VAS Platform</option>
+          <option>Conversational AI &amp; IVR</option>
+          <option>Mobile Engineering</option>
+          <option>Cloud-Native Platforms</option>
+          <option>Enterprise SaaS</option>
+          <option>Growth &amp; MarTech</option>
+          <option>General Enquiry</option>
+        </select>
+        <textarea placeholder="Tell us about your project, platform requirements, or any questions you have..."></textarea>
+        <button type="submit" class="btn-p" style="width:100%;border:none;cursor:pointer;display:block;text-align:center">Send Message →</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <p>✓ Message Sent Successfully — We'll respond within 24 hours.</p>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div>
+      <div class="sec-tag">Contact Details</div>
+      <h2>How to Reach Us</h2>
+      <div class="contact-info-block" style="margin-top:1.5rem">
+        <div class="ci-row">
+          <div class="ci-icon-box">📧</div>
+          <div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:marketing@telecomnetsolution.com">marketing@telecomnetsolution.com</a></div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box">🌐</div>
+          <div><div class="ci-lbl">Website</div><div class="ci-val"><a href="https://telecomnetsolutions.co" target="_blank">telecomnetsolutions.co</a></div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box">🕒</div>
+          <div><div class="ci-lbl">Response Time</div><div class="ci-val">Within 24 hours — Monday to Saturday</div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box">🌍</div>
+          <div><div class="ci-lbl">Operations</div><div class="ci-val">India (Headquarters) · Africa (Field Operations)</div></div>
+        </div>
+        <div class="ci-row">
+          <div class="ci-icon-box">🤝</div>
+          <div><div class="ci-lbl">Strategic Partnerships</div><div class="ci-val">Actively exploring operator partnerships, AI technology integrations, and joint go-to-market opportunities across emerging markets</div></div>
+        </div>
+      </div>
+
+      <div class="map-box">
+        <div class="map-pulse"></div>
+        <span class="map-label">India HQ · Africa Operations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section style="background:var(--bg2)">
+  <div class="sec-tag">Our Presence</div>
+  <h2>Global Engineering Presence</h2>
+  <p class="sec-sub">Engineering headquarters in India with active deployment teams and operator partnerships across emerging markets in Africa, Asia, and the Middle East.</p>
+  <div class="offices-grid">
+    <div class="office-card"><span class="office-flag">🇮🇳</span><h3>India — Engineering HQ</h3><p>Our primary engineering hub housing full-stack developers, AI/ML engineers, DevOps teams, and product specialists serving clients across multiple continents.</p></div>
+    <div class="office-card"><span class="office-flag">🌍</span><h3>Africa — Regional Operations</h3><p>Field deployment teams supporting live operator integrations across West, East, and Central Africa — embedded with Orange, MTN, and Airtel network operations teams.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="sec-tag">FAQ</div>
+  <h2>Frequently Asked Questions</h2>
+  <p class="sec-sub">Common questions from operators and enterprises before starting a project with us.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How quickly can you deploy an AI-powered M-VAS platform? <span>+</span></button>
+      <div class="faq-a"><p>Standard deployments take 6–10 weeks from kick-off to go-live, depending on integration complexity and AI model training requirements. Our cloud-native architecture allows rapid pilots in as little as 3 weeks for proof-of-concept deployments.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you support USSD and legacy telecom protocols? <span>+</span></button>
+      <div class="faq-a"><p>Absolutely. We support the full telecom protocol stack — USSD, SS7, SIGTRAN, Diameter, RCS, and modern REST/GraphQL APIs. Our gateways bridge legacy infrastructure with modern AI-powered services, giving operators the best of both worlds.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you integrate with our existing BSS/OSS systems? <span>+</span></button>
+      <div class="faq-a"><p>Yes — we have deep integration experience with Ericsson IN, Huawei SDP, Comverse, Amdocs, and custom BSS/OSS stacks via REST, SOAP, gRPC, and Kafka event streams. Every engagement starts with a technical discovery session to map your existing landscape.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What SLA do your platforms operate under? <span>+</span></button>
+      <div class="faq-a"><p>Our standard production SLA is 99.99% uptime with 24/7 observability, automated failover via Kubernetes, and 1-hour response time for P1 incidents. We provide real-time SLA dashboards with full transparency into platform health.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you offer white-label SaaS platforms? <span>+</span></button>
+      <div class="faq-a"><p>Yes — all platforms are fully white-labellable with operator branding, custom domains, theming, and configurable workflows. Multi-tenant architectures support multiple brands on a single deployment with strict data isolation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand"><a href="index.html" style="text-decoration:none"><span class="foot-logo-text">TELECOM<span>NET</span></span><span class="foot-theme-lbl" id="foot-theme-lbl">🌌 Sci-Fi Dark</span></div><p style="margin-top:.8rem">Telecomnet IT Solutions Pvt Ltd — engineering AI-driven telecom platforms, intelligent VAS solutions, and cloud-native enterprise software for the next generation of operators.</p></div>
+    <div><div class="foot-col-title">Pages</div><ul class="foot-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="foot-col-title">Services</div><ul class="foot-links"><li><a href="services.html">AI-Powered M-VAS</a></li><li><a href="services.html">Conversational AI</a></li><li><a href="services.html">Mobile Engineering</a></li><li><a href="services.html">Cloud Platforms</a></li><li><a href="services.html">Enterprise SaaS</a></li></ul></div>
+    <div><div class="foot-col-title">Contact</div><ul class="foot-links"><li><a href="mailto:marketing@telecomnetsolution.com">marketing@telecomnetsolution.com</a></li><li><a href="https://telecomnetsolutions.co">telecomnetsolutions.co</a></li><li><a href="#">India · Africa Operations</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span class="foot-copy">© 2024 Telecomnet IT Solutions Pvt Ltd — All Rights Reserved</span></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+function toggleFaq(btn){
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(a=>a.classList.remove('open'));
+  document.querySelectorAll('.faq-q.open').forEach(q=>q.classList.remove('open'));
+  if(!isOpen){ answer.classList.add('open'); btn.classList.add('open'); }
+}
+</script>
+</body>
+</html>

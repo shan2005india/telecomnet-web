@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="scifi">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Telecomnet Solutions — Services</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.srv-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;margin-bottom:5rem;padding-bottom:5rem;border-bottom:1px solid var(--border)}
+.srv-detail-grid:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.srv-detail-grid.reverse{direction:rtl}
+.srv-detail-grid.reverse > *{direction:ltr}
+.srv-visual{position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.srv-vis-bg{position:absolute;inset:0;border:1px solid var(--border);background:var(--card);overflow:hidden}
+[data-theme="blueprint"] .srv-vis-bg{background:#fff}
+.srv-vis-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:30px 30px}
+.srv-vis-num{font-family:'Orbitron',monospace;font-size:6rem;font-weight:900;color:var(--a1);opacity:.08;position:absolute;bottom:-10px;right:10px;line-height:1;pointer-events:none}
+.srv-vis-icon{position:relative;z-index:2;text-align:center}
+.srv-vis-icon svg{filter:drop-shadow(0 0 12px var(--a1))}
+[data-theme="blueprint"] .srv-vis-icon svg{filter:drop-shadow(0 0 8px rgba(26,63,168,.3))}
+.srv-vis-icon .srv-label{font-family:'Orbitron',monospace;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--a1);margin-top:.8rem;display:block}
+.srv-features{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-top:1.3rem}
+.srv-features li{display:flex;align-items:flex-start;gap:.7rem;font-size:.9rem;line-height:1.6;color:var(--muted)}
+.srv-features li::before{content:'→';color:var(--a1);font-weight:700;flex-shrink:0;margin-top:1px}
+.srv-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+.tech-tag{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .7rem;background:var(--card);border:1px solid var(--border);color:var(--muted)}
+[data-theme="blueprint"] .tech-tag{background:#f0f5ff}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:1rem}
+.proc-step{background:var(--card);padding:1.8rem 1.4rem;position:relative}
+[data-theme="blueprint"] .proc-step{background:#fff}
+.proc-num{font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;color:var(--a1);opacity:.18;display:block;margin-bottom:.6rem}
+.proc-step h3{font-size:.76rem;margin-bottom:.4rem}
+.proc-step p{font-size:.82rem;line-height:1.6}
+@media(max-width:900px){
+  .srv-detail-grid{grid-template-columns:1fr;gap:2rem}
+  .srv-detail-grid.reverse{direction:ltr}
+  .srv-visual{height:200px}
+  .process-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="bgcanvas"></canvas>
+<div id="theme-toast"></div>
+<div class="theme-dots">
+  <div class="tdot" data-t="scifi"></div>
+  <div class="tdot" data-t="blueprint"></div>
+  <div class="tdot" data-t="premium"></div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo">TELECOM<span>NET</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active-link">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="ph-eyebrow">Engineering Excellence</div>
+  <h1><span class="h1-grad">Solutions &amp; Services</span></h1>
+  <p>Full-stack engineering capabilities spanning AI-driven telecom platforms, cloud-native applications, conversational AI, and enterprise SaaS — built to scale across emerging markets.</p>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="t-inner">
+    <span class="t-item">M-VAS Platforms</span><span class="t-sep">◆</span><span class="t-item">IVR Solutions</span><span class="t-sep">◆</span><span class="t-item">USSD Gateway</span><span class="t-sep">◆</span><span class="t-item">SMS Platform</span><span class="t-sep">◆</span><span class="t-item">Mobile App Dev</span><span class="t-sep">◆</span><span class="t-item">Web Development</span><span class="t-sep">◆</span><span class="t-item">Enterprise Suite</span><span class="t-sep">◆</span><span class="t-item">Digital Marketing</span><span class="t-sep">◆</span><span class="t-item">M-VAS Platforms</span><span class="t-sep">◆</span><span class="t-item">IVR Solutions</span><span class="t-sep">◆</span><span class="t-item">USSD Gateway</span><span class="t-sep">◆</span><span class="t-item">SMS Platform</span><span class="t-sep">◆</span><span class="t-item">Mobile App Dev</span><span class="t-sep">◆</span><span class="t-item">Web Development</span><span class="t-sep">◆</span><span class="t-item">Enterprise Suite</span><span class="t-sep">◆</span><span class="t-item">Digital Marketing</span><span class="t-sep">◆</span>
+  </div>
+</div>
+
+<!-- SERVICE 01 -->
+<section>
+  <div class="srv-detail-grid">
+    <div class="srv-visual">
+      <div class="srv-vis-bg"><div class="srv-vis-num">01</div></div>
+      <div class="srv-vis-icon">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="42" stroke="var(--a1)" stroke-width="1.2" stroke-dasharray="6 3" opacity=".4"/>
+          <circle cx="50" cy="50" r="28" stroke="var(--a2)" stroke-width="1.5" opacity=".6"/>
+          <circle cx="50" cy="50" r="12" fill="var(--a1)" opacity=".2"/>
+          <circle cx="50" cy="50" r="6" fill="var(--a1)"/>
+          <circle cx="50" cy="8" r="4" fill="var(--a1)" opacity=".8"/>
+          <circle cx="92" cy="50" r="4" fill="var(--a2)" opacity=".8"/>
+          <circle cx="50" cy="92" r="4" fill="var(--a1)" opacity=".8"/>
+          <circle cx="8" cy="50" r="4" fill="var(--a2)" opacity=".8"/>
+          <line x1="50" y1="8" x2="50" y2="50" stroke="var(--a1)" stroke-width=".8" stroke-dasharray="3 2" opacity=".5"/>
+          <line x1="92" y1="50" x2="50" y2="50" stroke="var(--a2)" stroke-width=".8" stroke-dasharray="3 2" opacity=".5"/>
+        </svg>
+        <span class="srv-label">M-VAS Platform</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Service 01</div>
+      <h2>AI-Powered M-VAS Platforms</h2>
+      <p>Next-generation Mobile Value-Added Services platforms engineered for modern telecom operators. Our suite combines traditional VAS channels with machine learning, predictive analytics, and real-time personalization to maximize subscriber engagement and ARPU.</p>
+      <ul class="srv-features">
+        <li>Unified IVR, USSD, SMS, RCS, and Web/App platforms via single API integration</li>
+        <li>Carrier-grade reliability with 99.99% uptime SLA and active-active failover</li>
+        <li>ML-powered subscriber segmentation and predictive churn modeling</li>
+        <li>Multi-language NLP support across African, Asian, and Middle Eastern markets</li>
+        <li>Native integration with all major billing platforms — DCB, prepaid, postpaid</li>
+        <li>Real-time analytics dashboards with custom KPI tracking and BI exports</li>
+      </ul>
+      <div class="srv-tech">
+        <span class="tech-tag">USSD Gateway</span><span class="tech-tag">SMS API</span><span class="tech-tag">HLR Lookup</span><span class="tech-tag">WAP Push</span><span class="tech-tag">DCB Integration</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="srv-detail-grid reverse">
+    <div class="srv-visual">
+      <div class="srv-vis-bg"><div class="srv-vis-num">02</div></div>
+      <div class="srv-vis-icon">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="15" y="20" width="70" height="50" rx="4" stroke="var(--a1)" stroke-width="1.5" opacity=".7"/>
+          <line x1="15" y1="36" x2="85" y2="36" stroke="var(--a1)" stroke-width="1" opacity=".3"/>
+          <polyline points="25,58 38,44 50,52 62,36 80,42" stroke="var(--a2)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          <circle cx="38" cy="44" r="3" fill="var(--a1)"/>
+          <circle cx="50" cy="52" r="3" fill="var(--a1)"/>
+          <circle cx="62" cy="36" r="3" fill="var(--a2)"/>
+          <line x1="50" y1="70" x2="50" y2="82" stroke="var(--a1)" stroke-width="1.5" opacity=".6"/>
+          <line x1="32" y1="82" x2="68" y2="82" stroke="var(--a1)" stroke-width="1.5" opacity=".6"/>
+        </svg>
+        <span class="srv-label">IVR System</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Service 02</div>
+      <h2>Conversational AI &amp; IVR</h2>
+      <p>Intelligent voice platforms powered by advanced NLP and speech recognition. Our conversational AI systems handle complex customer interactions, automate workflows, and deliver human-like experiences at telecom scale — reducing operational costs while improving CSAT.</p>
+      <ul class="srv-features">
+        <li>Advanced NLU with intent detection and multi-turn dialogue management</li>
+        <li>Generative AI integration — LLM-powered responses and dynamic content</li>
+        <li>Deep CRM integration — Salesforce, HubSpot, Zoho, custom REST/GraphQL APIs</li>
+        <li>Automated outbound campaigns with AI-driven contact scoring</li>
+        <li>Auto-transcription, sentiment analysis, and compliance audit trails</li>
+        <li>Real-time observability with Grafana dashboards and alerting</li>
+      </ul>
+      <div class="srv-tech">
+        <span class="tech-tag">SIP/VoIP</span><span class="tech-tag">ASR Engine</span><span class="tech-tag">TTS</span><span class="tech-tag">WebRTC</span><span class="tech-tag">DTMF</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="srv-detail-grid">
+    <div class="srv-visual">
+      <div class="srv-vis-bg"><div class="srv-vis-num">03</div></div>
+      <div class="srv-vis-icon">
+        <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+          <rect x="12" y="6" width="56" height="88" rx="6" stroke="var(--a1)" stroke-width="1.5" opacity=".7"/>
+          <line x1="12" y1="20" x2="68" y2="20" stroke="var(--a1)" stroke-width="1" opacity=".35"/>
+          <line x1="12" y1="80" x2="68" y2="80" stroke="var(--a1)" stroke-width="1" opacity=".35"/>
+          <circle cx="40" cy="90" r="3.5" fill="var(--a2)"/>
+          <rect x="22" y="28" width="36" height="5" rx="2.5" fill="var(--a1)" opacity=".4"/>
+          <rect x="22" y="38" width="28" height="5" rx="2.5" fill="var(--a2)" opacity=".4"/>
+          <rect x="22" y="48" width="32" height="5" rx="2.5" fill="var(--a1)" opacity=".25"/>
+          <rect x="22" y="60" width="36" height="12" rx="3" stroke="var(--a2)" stroke-width="1.2" fill="none" opacity=".7"/>
+        </svg>
+        <span class="srv-label">Mobile App</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Service 03</div>
+      <h2>Mobile Engineering</h2>
+      <p>Production-grade mobile applications engineered for telecom operators and enterprises. From native iOS and Android to cross-platform builds — we deliver pixel-perfect UX, robust backends, and continuous delivery pipelines that scale to millions of users.</p>
+      <ul class="srv-features">
+        <li>Native iOS (Swift) and Android (Kotlin/Java) development</li>
+        <li>Cross-platform React Native and Flutter applications</li>
+        <li>Telecom-specific apps — top-up, data bundles, self-care portals</li>
+        <li>API design, backend microservices and cloud deployment</li>
+        <li>App Store optimisation (ASO) and launch support</li>
+        <li>Ongoing maintenance, updates and performance monitoring</li>
+      </ul>
+      <div class="srv-tech">
+        <span class="tech-tag">React Native</span><span class="tech-tag">Flutter</span><span class="tech-tag">Swift</span><span class="tech-tag">Kotlin</span><span class="tech-tag">REST API</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="srv-detail-grid reverse">
+    <div class="srv-visual">
+      <div class="srv-vis-bg"><div class="srv-vis-num">04</div></div>
+      <div class="srv-vis-icon">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="38" stroke="var(--a1)" stroke-width="1.5" opacity=".65"/>
+          <line x1="50" y1="12" x2="50" y2="88" stroke="var(--a1)" stroke-width="1" opacity=".4"/>
+          <line x1="12" y1="50" x2="88" y2="50" stroke="var(--a1)" stroke-width="1" opacity=".4"/>
+          <ellipse cx="50" cy="50" rx="20" ry="38" stroke="var(--a2)" stroke-width="1.2" opacity=".7"/>
+          <ellipse cx="50" cy="50" rx="38" ry="16" stroke="var(--a1)" stroke-width="1" opacity=".3"/>
+          <circle cx="50" cy="50" r="5" fill="var(--a1)"/>
+        </svg>
+        <span class="srv-label">Web Platform</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Service 04</div>
+      <h2>Cloud-Native Platforms</h2>
+      <p>Modern web applications built on cloud-native architectures. From operator self-care portals to multi-tenant B2B SaaS platforms — we engineer scalable systems using containerization, microservices, and serverless patterns.</p>
+      <ul class="srv-features">
+        <li>Custom web portals — subscriber self-care, reseller portals, admin panels</li>
+        <li>Progressive Web Apps (PWA) with offline capability</li>
+        <li>E-commerce and digital marketplace platforms</li>
+        <li>Telecom billing and provisioning web interfaces</li>
+        <li>API gateways and microservices architecture</li>
+        <li>Cloud hosting on AWS, GCP, Azure with auto-scaling</li>
+      </ul>
+      <div class="srv-tech">
+        <span class="tech-tag">PHP/Laravel</span><span class="tech-tag">Python/Django</span><span class="tech-tag">Node.js</span><span class="tech-tag">React</span><span class="tech-tag">MySQL</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="srv-detail-grid">
+    <div class="srv-visual">
+      <div class="srv-vis-bg"><div class="srv-vis-num">05</div></div>
+      <div class="srv-vis-icon">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="8" y="12" width="36" height="36" rx="4" stroke="var(--a1)" stroke-width="1.5" opacity=".7"/>
+          <rect x="56" y="12" width="36" height="36" rx="4" stroke="var(--a2)" stroke-width="1.5" opacity=".8"/>
+          <rect x="8" y="60" width="36" height="36" rx="4" stroke="var(--a2)" stroke-width="1.5" opacity=".8"/>
+          <rect x="56" y="60" width="36" height="36" rx="4" stroke="var(--a1)" stroke-width="1.5" opacity=".7"/>
+          <line x1="26" y1="48" x2="26" y2="60" stroke="var(--a1)" stroke-width="1.2" opacity=".5"/>
+          <line x1="74" y1="48" x2="74" y2="60" stroke="var(--a2)" stroke-width="1.2" opacity=".5"/>
+          <line x1="26" y1="54" x2="74" y2="54" stroke="var(--a1)" stroke-width=".8" opacity=".35"/>
+        </svg>
+        <span class="srv-label">Enterprise</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Service 05</div>
+      <h2>Enterprise &amp; SaaS</h2>
+      <p>White-label SaaS platforms and enterprise software purpose-built for telecom. Our platforms give operators AI-powered insights, automated workflows, and the control needed to manage subscribers, partners, and revenue streams at scale.</p>
+      <ul class="srv-features">
+        <li>Subscriber management systems (SMS) and CRM platforms</li>
+        <li>Real-time revenue assurance and fraud management</li>
+        <li>Partner and reseller management portals</li>
+        <li>Network monitoring and KPI dashboards</li>
+        <li>Automated reporting and BI analytics integrations</li>
+        <li>Legacy system migration and modernisation services</li>
+      </ul>
+      <div class="srv-tech">
+        <span class="tech-tag">Microservices</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Docker</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="srv-detail-grid reverse">
+    <div class="srv-visual">
+      <div class="srv-vis-bg"><div class="srv-vis-num">06</div></div>
+      <div class="srv-vis-icon">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <path d="M50 10L88 30V70L50 90L12 70V30Z" stroke="var(--a2)" stroke-width="1.5" fill="none" opacity=".7"/>
+          <path d="M50 26L72 38V62L50 74L28 62V38Z" stroke="var(--a1)" stroke-width="1.2" fill="none" opacity=".5"/>
+          <circle cx="50" cy="50" r="10" fill="var(--a2)" opacity=".25"/>
+          <circle cx="50" cy="50" r="5" fill="var(--a2)"/>
+          <circle cx="50" cy="10" r="3.5" fill="var(--a1)" opacity=".8"/>
+          <circle cx="88" cy="30" r="3.5" fill="var(--a2)" opacity=".8"/>
+          <circle cx="88" cy="70" r="3.5" fill="var(--a1)" opacity=".8"/>
+        </svg>
+        <span class="srv-label">Digital Marketing</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Service 06</div>
+      <h2>Growth &amp; Marketing Tech</h2>
+      <p>Data-driven growth engineering for telecom operators. We combine performance marketing, marketing automation, customer data platforms, and AI-powered segmentation to accelerate subscriber acquisition and lifetime value across all digital channels.</p>
+      <ul class="srv-features">
+        <li>Performance marketing — Google Ads, Meta, LinkedIn, programmatic</li>
+        <li>Telecom-specific CRM and subscriber engagement campaigns</li>
+        <li>SEO optimisation and content strategy for operator brands</li>
+        <li>Social media management and community building</li>
+        <li>Marketing analytics dashboards with ROI tracking</li>
+        <li>Email, SMS and push notification marketing automation</li>
+      </ul>
+      <div class="srv-tech">
+        <span class="tech-tag">Google Ads</span><span class="tech-tag">Meta Ads</span><span class="tech-tag">GA4</span><span class="tech-tag">HubSpot</span><span class="tech-tag">Mailchimp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="background:var(--bg2)">
+  <div class="sec-tag">How We Work</div>
+  <h2>How We Engineer Solutions</h2>
+  <p class="sec-sub">A modern, agile delivery methodology combining design thinking, lean engineering, and continuous deployment to ship production-grade platforms faster.</p>
+  <div class="process-grid">
+    <div class="proc-step"><span class="proc-num">01</span><h3>Discovery &amp; Scoping</h3><p>We deep-dive into your requirements, map the technical architecture, and define a clear project roadmap with milestones.</p></div>
+    <div class="proc-step"><span class="proc-num">02</span><h3>Design &amp; Prototype</h3><p>UI/UX wireframes, system design documents, and working prototypes reviewed and approved before any development begins.</p></div>
+    <div class="proc-step"><span class="proc-num">03</span><h3>Agile Development</h3><p>Two-week sprint cycles with regular demos, testing in staging environments, and continuous integration pipelines.</p></div>
+    <div class="proc-step"><span class="proc-num">04</span><h3>Launch &amp; Support</h3><p>Production deployment with go-live support, operator integration testing, and 24/7 post-launch monitoring.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band" style="background:var(--bg3)">
+  <div>
+    <div class="sec-tag">Get Started</div>
+    <h2>Ready to Discuss Your Project?</h2>
+    <p style="margin-top:.5rem">Tell us about your platform needs and we'll respond with a tailored proposal within 48 hours.</p>
+  </div>
+  <a href="contact.html" class="btn-p">Request a Proposal</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a href="index.html" style="text-decoration:none"><span class="foot-logo-text">TELECOM<span>NET</span></span><span class="foot-theme-lbl" id="foot-theme-lbl">🌌 Sci-Fi Dark</span></div>
+      <p style="margin-top:.8rem">Telecomnet IT Solutions Pvt Ltd — engineering AI-driven telecom platforms, intelligent VAS solutions, and cloud-native enterprise software for the next generation of operators.</p>
+    </div>
+    <div><div class="foot-col-title">Pages</div><ul class="foot-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="foot-col-title">Services</div><ul class="foot-links"><li><a href="services.html">AI-Powered M-VAS</a></li><li><a href="services.html">Conversational AI</a></li><li><a href="services.html">Mobile Engineering</a></li><li><a href="services.html">Cloud Platforms</a></li><li><a href="services.html">Enterprise SaaS</a></li></ul></div>
+    <div><div class="foot-col-title">Contact</div><ul class="foot-links"><li><a href="mailto:marketing@telecomnetsolution.com">marketing@telecomnetsolution.com</a></li><li><a href="https://telecomnetsolutions.co">telecomnetsolutions.co</a></li><li><a href="#">India · Africa Operations</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span class="foot-copy">© 2024 Telecomnet IT Solutions Pvt Ltd — All Rights Reserved</span></div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

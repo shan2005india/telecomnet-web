@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="scifi">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Telecomnet Solutions — AI-Powered Telecom Innovation</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;z-index:1}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:52px 52px;animation:gridMove 18s linear infinite}
+.hero-orb-wrap{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:580px;height:580px;pointer-events:none}
+.hero-orb{position:absolute;inset:0;border-radius:50%;animation:orbFloat 6s ease-in-out infinite}
+[data-theme="scifi"] .hero-orb{background:radial-gradient(circle at 38% 38%,rgba(0,245,255,.18),rgba(0,60,200,.1) 50%,transparent 72%)}
+[data-theme="blueprint"] .hero-orb{background:radial-gradient(circle at 38% 38%,rgba(26,63,168,.13),rgba(244,124,32,.06) 50%,transparent 72%)}
+[data-theme="premium"] .hero-orb{background:radial-gradient(circle at 38% 38%,rgba(244,124,32,.18),rgba(26,63,168,.1) 50%,transparent 72%)}
+@keyframes orbFloat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.orb-ring{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--border)}
+.orb-ring:nth-child(2){width:240px;height:240px;animation:spin 13s linear infinite}
+.orb-ring:nth-child(3){width:390px;height:390px;animation:spin 23s linear infinite reverse;border-style:dashed;opacity:.6}
+.orb-ring:nth-child(4){width:540px;height:540px;animation:spin 37s linear infinite;opacity:.28}
+@keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.od{position:absolute;border-radius:50%;top:50%;left:50%;margin:-5px 0 0 -5px}
+.od:nth-child(5){width:10px;height:10px;background:var(--a1);animation:od1 7s linear infinite}
+.od:nth-child(6){width:8px;height:8px;background:var(--a2);animation:od2 13s linear infinite reverse}
+.od:nth-child(7){width:7px;height:7px;background:var(--a3);animation:od3 19s linear infinite}
+@keyframes od1{from{transform:rotate(0deg) translateX(120px)}to{transform:rotate(360deg) translateX(120px)}}
+@keyframes od2{from{transform:rotate(0deg) translateX(195px)}to{transform:rotate(360deg) translateX(195px)}}
+@keyframes od3{from{transform:rotate(0deg) translateX(270px)}to{transform:rotate(360deg) translateX(270px)}}
+.hero-circuit{position:absolute;right:0;top:0;bottom:0;width:50%;opacity:.45;pointer-events:none;color:var(--a1)}
+.hero-content{position:relative;z-index:2;max-width:640px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.66rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--a1);margin-bottom:1.4rem}
+.hero-eyebrow::before{content:'';width:26px;height:2px;background:var(--a1)}
+.hero h1{font-family:'Orbitron',monospace;font-size:clamp(2rem,3.2vw,3.2rem);font-weight:900;line-height:1.08;margin-bottom:1.3rem}
+.h1a{display:block;color:var(--text)}
+.h1b{display:block;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h1c{display:block;color:var(--a1)}
+.hero-desc{font-size:1rem;line-height:1.78;color:var(--muted);max-width:490px;margin-bottom:2.3rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.hero-stats{display:flex;border:1px solid var(--border);background:var(--card);overflow:hidden;max-width:520px}
+[data-theme="premium"] .hero-stats{background:rgba(255,255,255,.05);backdrop-filter:blur(12px)}
+.hs{flex:1;padding:.9rem 1rem;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.hs:last-child{border-right:none}
+.hs::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--a1);transform:scaleX(0);transition:transform .3s}
+.hs:hover::after{transform:scaleX(1)}
+.hs-n{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;color:var(--num);display:block}
+.hs-l{font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:block;margin-top:.14rem}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1rem}
+.why-card{padding:1.6rem 1.4rem;border:1px solid var(--border);background:var(--card);position:relative;overflow:hidden}
+[data-theme="blueprint"] .why-card{background:#fff}
+.why-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--a1),var(--a2));transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.why-card:hover::after{transform:scaleX(1)}
+.why-icon{font-size:1.5rem;margin-bottom:.7rem;display:block}
+.why-card h3{font-size:.78rem;margin-bottom:.45rem}
+.why-card p{font-size:.84rem;line-height:1.6}
+.srv-teaser{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.st-card{background:var(--card);padding:1.8rem 1.5rem;position:relative;overflow:hidden;transition:background .25s}
+[data-theme="blueprint"] .st-card{background:#fff}
+.st-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.st-card:hover{background:var(--bg3)}
+.st-card:hover::before{transform:scaleX(1)}
+.st-num{font-family:'Orbitron',monospace;font-size:.56rem;font-weight:700;letter-spacing:.18em;color:var(--a1);display:block;margin-bottom:.8rem}
+.st-card h3{font-size:.78rem;margin-bottom:.5rem}
+.st-card p{font-size:.84rem;line-height:1.6}
+.st-card a{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);text-decoration:none;margin-top:.9rem;transition:gap .2s}
+.st-card a:hover{gap:10px}
+.clients-section{background:var(--bg2);transition:background .55s}
+[data-theme="blueprint"] .clients-section{background:#fff}
+.clients-logos{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem}
+.cl-badge{display:flex;align-items:center;gap:.7rem;font-family:'Orbitron',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;padding:.72rem 1.6rem;border:1.5px solid var(--border);color:var(--muted);background:var(--card);transition:all .25s;cursor:default;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px))}
+.cl-badge:hover{border-color:var(--a1);color:var(--a1)}
+.cl-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:background .25s}
+.cl-badge:hover .cl-dot{background:var(--a1)}
+.cta-band{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:4rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+[data-theme="blueprint"] .cta-band{background:#fff}
+.cta-band h2{margin:0;max-width:500px}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}.srv-teaser{grid-template-columns:1fr 1fr}.hero-orb-wrap{opacity:.4}}
+@media(max-width:600px){.why-grid,.srv-teaser{grid-template-columns:1fr}.hero-orb-wrap{display:none}}
+</style>
+</head>
+<body>
+<canvas id="bgcanvas"></canvas>
+<div id="theme-toast"></div>
+<div class="theme-dots">
+  <div class="tdot" data-t="scifi"></div>
+  <div class="tdot" data-t="blueprint"></div>
+  <div class="tdot" data-t="premium"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">TELECOM<span>NET</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active-link">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb-wrap">
+    <div class="hero-orb"></div>
+    <div class="orb-ring"></div><div class="orb-ring"></div><div class="orb-ring"></div>
+    <div class="od"></div><div class="od"></div><div class="od"></div>
+  </div>
+  <svg class="hero-circuit" viewBox="0 0 600 800" fill="none">
+    <path d="M600 90 H370 V190 H190 V330 H70" stroke="currentColor" stroke-width="1" opacity=".2"/>
+    <path d="M600 290 H340 V165 H220 V385 H120 V485" stroke="currentColor" stroke-width="1" opacity=".13"/>
+    <path d="M600 640 H440 V690 H230" stroke="currentColor" stroke-width="1.1" opacity=".16"/>
+    <circle cx="370" cy="90" r="4" fill="currentColor" opacity=".35"/>
+    <circle cx="190" cy="190" r="4" fill="currentColor" opacity=".28"/>
+    <circle cx="340" cy="290" r="4" fill="currentColor" opacity=".32"/>
+    <circle r="5" fill="currentColor" opacity=".8"><animateMotion dur="5s" repeatCount="indefinite" path="M600 90 H370 V190 H190 V330 H70"/></circle>
+    <circle r="4" fill="currentColor" opacity=".7"><animateMotion dur="7.5s" repeatCount="indefinite" path="M600 290 H340 V165 H220 V385 H120 V485"/></circle>
+    <circle r="4" fill="currentColor" opacity=".65"><animateMotion dur="9s" repeatCount="indefinite" path="M600 640 H440 V690 H230"/></circle>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI-Powered Telecom Innovation</div>
+    <h1>
+      <span class="h1a">Engineering the</span>
+      <span class="h1b">Future of</span>
+      <span class="h1c">Telecom &amp; AI</span>
+    </h1>
+    <p class="hero-desc">Telecomnet builds AI-driven telecom platforms, intelligent VAS solutions, and cloud-native enterprise software. Trusted by leading operators across Africa and emerging markets to power millions of subscriber interactions daily.</p>
+    <div class="hero-btns">
+      <a href="services.html" class="btn-p">Explore Services</a>
+      <a href="contact.html" class="btn-s">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-n">10M+</span><span class="hs-l">Daily Transactions</span></div>
+      <div class="hs"><span class="hs-n">99.99%</span><span class="hs-l">Uptime</span></div>
+      <div class="hs"><span class="hs-n">15+</span><span class="hs-l">Countries</span></div>
+      <div class="hs"><span class="hs-n">AI-First</span><span class="hs-l">Architecture</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="t-inner">
+    <span class="t-item">AI-Powered M-VAS</span><span class="t-sep">◆</span><span class="t-item">Conversational AI</span><span class="t-sep">◆</span><span class="t-item">Cloud-Native Platforms</span><span class="t-sep">◆</span><span class="t-item">Mobile Engineering</span><span class="t-sep">◆</span><span class="t-item">Enterprise SaaS</span><span class="t-sep">◆</span><span class="t-item">Growth &amp; MarTech</span><span class="t-sep">◆</span><span class="t-item">Machine Learning</span><span class="t-sep">◆</span><span class="t-item">DevOps Excellence</span><span class="t-sep">◆</span><span class="t-item">AI-Powered M-VAS</span><span class="t-sep">◆</span><span class="t-item">Conversational AI</span><span class="t-sep">◆</span><span class="t-item">Cloud-Native Platforms</span><span class="t-sep">◆</span><span class="t-item">Mobile Engineering</span><span class="t-sep">◆</span><span class="t-item">Enterprise SaaS</span><span class="t-sep">◆</span><span class="t-item">Growth &amp; MarTech</span><span class="t-sep">◆</span>
+  </div>
+</div>
+
+<section style="background:var(--bg2)">
+  <div class="sec-tag">Why Telecomnet</div>
+  <h2>Where AI Meets Telecom Infrastructure</h2>
+  <p class="sec-sub">We engineer intelligent platforms that combine deep telecom expertise with modern AI, cloud-native architecture, and data-driven insights to give operators a competitive edge.</p>
+  <div class="why-grid">
+    <div class="why-card"><span class="why-icon">🤖</span><h3>AI &amp; Machine Learning</h3><p>Predictive churn modeling, intelligent voice bots, ML-powered subscriber segmentation, and personalized recommendations engineered into every platform.</p></div>
+    <div class="why-card"><span class="why-icon">☁️</span><h3>Cloud-Native Stack</h3><p>Kubernetes-orchestrated microservices on AWS, GCP, and Azure — auto-scaling, fault-tolerant infrastructure built for telecom-grade workloads.</p></div>
+    <div class="why-card"><span class="why-icon">⚡</span><h3>Real-Time Processing</h3><p>Kafka-powered event streaming and Redis-cached pipelines deliver sub-second response times across millions of concurrent sessions.</p></div>
+    <div class="why-card"><span class="why-icon">🔒</span><h3>Enterprise Security</h3><p>SOC 2 compliant infrastructure, end-to-end encryption, zero-trust architecture, and adherence to telecom regulatory standards across all markets.</p></div>
+    <div class="why-card"><span class="why-icon">📊</span><h3>Data-Driven Insights</h3><p>Real-time BI dashboards, custom analytics APIs, and AI-generated reports give operators full visibility into subscriber behavior and revenue trends.</p></div>
+    <div class="why-card"><span class="why-icon">🚀</span><h3>DevOps Excellence</h3><p>CI/CD pipelines, infrastructure-as-code, automated testing, and observability tooling ensure rapid delivery without compromising on quality.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-tag">What We Do</div>
+  <h2>Solutions That Scale</h2>
+  <p class="sec-sub">From AI-driven mobile VAS to cloud-native enterprise platforms — end-to-end solutions engineered for the future of telecom.</p>
+  <div class="srv-teaser">
+    <div class="st-card"><span class="st-num">01</span><h3>AI-Powered M-VAS</h3><p>Next-generation Mobile VAS platforms with ML-driven personalization, intelligent content recommendation, and predictive analytics built in.</p><a href="services.html">Learn More →</a></div>
+    <div class="st-card"><span class="st-num">02</span><h3>Conversational AI</h3><p>Intelligent IVR systems powered by NLP and speech recognition — natural conversations, automated workflows, and 24/7 customer engagement.</p><a href="services.html">Learn More →</a></div>
+    <div class="st-card"><span class="st-num">03</span><h3>Mobile Engineering</h3><p>Native iOS, Android, and cross-platform apps built with React Native and Flutter — modern UX, robust APIs, and continuous delivery.</p><a href="services.html">Learn More →</a></div>
+    <div class="st-card"><span class="st-num">04</span><h3>Cloud Platforms</h3><p>Scalable web applications and enterprise portals built on cloud-native stacks — React, Node.js, Python, and serverless architectures.</p><a href="services.html">Learn More →</a></div>
+    <div class="st-card"><span class="st-num">05</span><h3>SaaS &amp; Enterprise</h3><p>White-label operator platforms, BSS/OSS integration, AI-powered analytics dashboards, and revenue assurance systems at scale.</p><a href="services.html">Learn More →</a></div>
+    <div class="st-card"><span class="st-num">06</span><h3>Growth &amp; MarTech</h3><p>Data-driven growth engineering — performance marketing, marketing automation, CDP integration, and AI-powered subscriber acquisition.</p><a href="services.html">Learn More →</a></div>
+  </div>
+</section>
+
+<section class="clients-section">
+  <div class="sec-tag">Clients</div>
+  <h2>Powering Industry Leaders</h2>
+  <p class="sec-sub">Our AI-powered platforms are deployed across major telecom operators in emerging markets, processing millions of transactions daily.</p>
+  <div class="clients-logos">
+    <div class="cl-badge"><div class="cl-dot"></div>Orange</div>
+    <div class="cl-badge"><div class="cl-dot"></div>MTN</div>
+    <div class="cl-badge"><div class="cl-dot"></div>Airtel</div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <div class="sec-tag">Ready to Build?</div>
+    <h2>Let's Engineer Your Next Platform</h2>
+    <p style="margin-top:.5rem;max-width:480px">Whether you're modernizing legacy infrastructure or launching a new AI-driven product — our team delivers production-grade platforms that scale with your business.</p>
+  </div>
+  <a href="contact.html" class="btn-p">Start a Conversation</a>
+</div>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a href="index.html" style="text-decoration:none"><span class="foot-logo-text">TELECOM<span>NET</span></span></a>
+      <p style="margin-top:.8rem">Telecomnet IT Solutions Pvt Ltd — engineering AI-driven telecom platforms, intelligent VAS solutions, and cloud-native enterprise software for the next generation of operators.</p>
+    </div>
+    <div><div class="foot-col-title">Pages</div><ul class="foot-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="foot-col-title">Services</div><ul class="foot-links"><li><a href="services.html">AI-Powered M-VAS</a></li><li><a href="services.html">Conversational AI</a></li><li><a href="services.html">Mobile Engineering</a></li><li><a href="services.html">Cloud Platforms</a></li><li><a href="services.html">Enterprise SaaS</a></li></ul></div>
+    <div><div class="foot-col-title">Contact</div><ul class="foot-links"><li><a href="mailto:marketing@telecomnetsolution.com">marketing@telecomnetsolution.com</a></li><li><a href="https://telecomnetsolutions.co">telecomnetsolutions.co</a></li><li><a href="#">India · Africa Operations</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span class="foot-copy">© 2024 Telecomnet IT Solutions Pvt Ltd — All Rights Reserved</span></div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

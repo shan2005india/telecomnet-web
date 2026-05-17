@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="scifi">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Telecomnet Solutions — About Us</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.about-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-vis{position:relative;height:420px}
+.av-cx{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.av-ring{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);border:1.5px solid var(--border)}
+.av-ring:nth-child(1){width:160px;height:160px;animation:spin 12s linear infinite}
+.av-ring:nth-child(2){width:270px;height:270px;animation:spin 21s linear infinite reverse;border-style:dashed}
+.av-ring:nth-child(3){width:360px;height:360px;animation:spin 32s linear infinite;opacity:.4}
+.av-core{position:relative;z-index:3;width:108px;height:108px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;animation:corePulse 3s ease-in-out infinite;background:var(--bg3)}
+[data-theme="premium"] .av-core{background:rgba(255,255,255,.06);backdrop-filter:blur(10px)}
+.av-logo{width:82px;height:auto;display:block;mix-blend-mode:screen;filter:contrast(1.1)}
+[data-theme="blueprint"] .av-logo{mix-blend-mode:multiply}
+.av-node{position:absolute;width:11px;height:11px;border-radius:50%;border:2px solid var(--bg);animation:nodeG 2.2s ease-in-out infinite alternate}
+.av-node.n1{background:var(--a1)}
+.av-node.n2{background:var(--a2);animation-delay:.8s}
+.av-node.n3{background:var(--a3);animation-delay:1.5s}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:1rem}
+.stat-box{background:var(--card);padding:2rem 1.5rem;text-align:center}
+[data-theme="blueprint"] .stat-box{background:#fff}
+.stat-box:hover .num-big{color:var(--a2)}
+.stat-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
+
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1rem}
+.team-card{background:var(--card);border:1px solid var(--border);padding:1.8rem 1.5rem;text-align:center;position:relative;overflow:hidden;transition:transform .25s}
+[data-theme="blueprint"] .team-card{background:#fff}
+.team-card:hover{transform:translateY(-4px)}
+.team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.team-card:hover::before{transform:scaleX(1)}
+.team-avatar{width:70px;height:70px;border-radius:50%;border:2px solid var(--border);margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:var(--bg2)}
+[data-theme="blueprint"] .team-avatar{background:#e8eeff}
+.team-name{font-family:'Orbitron',monospace;font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--text);margin-bottom:.3rem}
+.team-role{font-size:.76rem;font-weight:600;color:var(--a1);letter-spacing:.08em;margin-bottom:.6rem}
+.team-card p{font-size:.82rem;line-height:1.6}
+
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.val-card{display:flex;gap:1.2rem;align-items:flex-start;padding:1.5rem;border:1px solid var(--border);background:var(--card)}
+[data-theme="blueprint"] .val-card{background:#fff}
+.val-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.val-card h3{font-size:.8rem;margin-bottom:.4rem}
+.val-card p{font-size:.85rem;line-height:1.62}
+
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.stack-item{background:var(--card);padding:1.4rem;text-align:center;transition:background .2s}
+[data-theme="blueprint"] .stack-item{background:#fff}
+.stack-item:hover{background:var(--bg3)}
+.stack-item:hover .stack-name{color:var(--a1)}
+.stack-icon{font-size:1.6rem;display:block;margin-bottom:.5rem}
+.stack-name{font-family:'Chakra Petch',monospace;font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+
+@media(max-width:900px){
+  .about-story-grid{grid-template-columns:1fr;gap:2rem}
+  .about-vis{height:280px}
+  .stats-row,.stack-grid{grid-template-columns:1fr 1fr}
+  .team-grid,.values-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="bgcanvas"></canvas>
+<div id="theme-toast"></div>
+<div class="theme-dots">
+  <div class="tdot" data-t="scifi"></div>
+  <div class="tdot" data-t="blueprint"></div>
+  <div class="tdot" data-t="premium"></div>
+</div>
+<nav>
+  <a href="index.html" class="nav-logo">TELECOM<span>NET</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" class="active-link">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="ph-eyebrow">Our Story</div>
+  <h1><span class="h1-grad">About Telecomnet</span></h1>
+  <p>An engineering-first company building the next generation of telecom infrastructure. We combine deep domain expertise with modern AI, cloud-native architecture, and data engineering to deliver platforms that operators trust at scale.</p>
+</div>
+
+<div class="ticker"><div class="t-inner"><span class="t-item">Innovation First</span><span class="t-sep">◆</span><span class="t-item">Operator-Focused</span><span class="t-sep">◆</span><span class="t-item">Africa-Ready</span><span class="t-sep">◆</span><span class="t-item">Engineering Excellence</span><span class="t-sep">◆</span><span class="t-item">24/7 Support</span><span class="t-sep">◆</span><span class="t-item">Global Reach</span><span class="t-sep">◆</span><span class="t-item">Innovation First</span><span class="t-sep">◆</span><span class="t-item">Operator-Focused</span><span class="t-sep">◆</span><span class="t-item">Africa-Ready</span><span class="t-sep">◆</span><span class="t-item">Engineering Excellence</span><span class="t-sep">◆</span><span class="t-item">24/7 Support</span><span class="t-sep">◆</span><span class="t-item">Global Reach</span><span class="t-sep">◆</span></div></div>
+
+<!-- STORY -->
+<section>
+  <div class="about-story-grid">
+    <div class="about-vis">
+      <div class="av-cx">
+        <div class="av-ring"></div><div class="av-ring"></div><div class="av-ring"></div>
+        <div class="av-core"><img class="av-logo" src="telecomnet-logo-transparent.png" alt="Telecomnet"/></div>
+        <div class="av-node n1" style="top:10%;left:53%"></div>
+        <div class="av-node n2" style="top:50%;right:8%"></div>
+        <div class="av-node n3" style="bottom:15%;left:18%"></div>
+        <div class="av-node n1" style="top:28%;left:12%"></div>
+        <div class="av-node n2" style="bottom:9%;right:28%"></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Our Story</div>
+      <h2>Built for the Future of Telecom</h2>
+      <p>Telecomnet IT Solutions Pvt Ltd was founded with a singular mission: to bridge the gap between complex telecom infrastructure and the intelligent digital services modern subscribers expect.</p>
+      <p style="margin-top:1rem">What began as a focused M-VAS provider has evolved into an end-to-end telecom technology company — engineering AI-powered platforms, cloud-native applications, and conversational AI systems deployed across leading mobile networks including Orange, MTN, and Airtel.</p>
+      <p style="margin-top:1rem">Today, our engineering teams across India and Africa build production-grade platforms processing over 10 million transactions daily — combining traditional telecom protocols with modern AI, ML, and cloud-native architectures.</p>
+      <div class="vision-bar" style="margin-top:1.5rem">
+        <p>"To be the forefront innovator transforming the digital landscape through unparalleled value-added services, cutting-edge mobile applications, and advanced telecom platforms."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background:var(--bg2);padding-top:3.5rem;padding-bottom:3.5rem">
+  <div class="sec-tag">By the Numbers</div>
+  <h2>Engineering Impact by the Numbers</h2>
+  <div class="stats-row">
+    <div class="stat-box"><span class="num-big">15+</span><span class="stat-label">Countries Served</span></div>
+    <div class="stat-box"><span class="num-big">10M+</span><span class="stat-label">Daily Transactions</span></div>
+    <div class="stat-box"><span class="num-big">99.99%</span><span class="stat-label">Platform Uptime</span></div>
+    <div class="stat-box"><span class="num-big">AI-First</span><span class="stat-label">Architecture</span></div>
+  </div>
+</section>
+
+<!-- MISSION & VALUES -->
+<section>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+    <div>
+      <div class="sec-tag">Mission &amp; Vision</div>
+      <h2>What Drives Us</h2>
+      <p>Our mission is to democratize access to world-class telecom technology. We build AI-powered platforms that empower operators of all sizes — from tier-one carriers to emerging market MVNOs — to deliver richer digital experiences to their subscribers.</p>
+      <p style="margin-top:1rem">We believe modern telecom infrastructure should be cloud-native, AI-enabled, and built on open standards. That's why we engineer flexible, API-first platforms that scale seamlessly alongside your subscriber base.</p>
+      <div class="divider"></div>
+      <div class="chips">
+        <span class="chip c1">Python / FastAPI</span>
+        <span class="chip c1">Node.js / TypeScript</span>
+        <span class="chip c2">TensorFlow / PyTorch</span>
+        <span class="chip c2">LangChain / LLM</span>
+        <span class="chip c1">React / Next.js</span>
+        <span class="chip c1">Kubernetes</span>
+        <span class="chip c2">AWS / GCP / Azure</span>
+        <span class="chip c1">Kafka / Redis</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-tag">Our Values</div>
+      <h2>What We Stand For</h2>
+      <div class="values-grid">
+        <div class="val-card"><span class="val-icon">🤖</span><div><h3>AI-First Engineering</h3><p>We integrate machine learning and generative AI into every platform we build — from intelligent routing to predictive analytics and personalization.</p></div></div>
+        <div class="val-card"><span class="val-icon">🤝</span><div><h3>Partnership Mindset</h3><p>We treat every client as a long-term technology partner. Your platform success and roadmap evolution is our shared mission.</p></div></div>
+        <div class="val-card"><span class="val-icon">⚙️</span><div><h3>Engineering Excellence</h3><p>Test-driven development, automated CI/CD pipelines, infrastructure-as-code, and security-first architecture — non-negotiable at every stage.</p></div></div>
+        <div class="val-card"><span class="val-icon">🌍</span><div><h3>Emerging Markets DNA</h3><p>Deep domain expertise across African and Asian telecom markets — local knowledge built into every platform decision and architecture choice.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section>
+  <div class="sec-tag">Technology</div>
+  <h2>Our Technology Stack</h2>
+  <p class="sec-sub">We use battle-tested technologies chosen for telecom-grade reliability, performance, and scalability.</p>
+  <div class="stack-grid">
+    <div class="stack-item"><span class="stack-icon">🐍</span><span class="stack-name">Python / FastAPI</span></div>
+    <div class="stack-item"><span class="stack-icon">🟢</span><span class="stack-name">Node.js / TS</span></div>
+    <div class="stack-item"><span class="stack-icon">⚛️</span><span class="stack-name">React / Next.js</span></div>
+    <div class="stack-item"><span class="stack-icon">🤖</span><span class="stack-name">TensorFlow / PyTorch</span></div>
+    <div class="stack-item"><span class="stack-icon">🧠</span><span class="stack-name">LangChain / LLM</span></div>
+    <div class="stack-item"><span class="stack-icon">📡</span><span class="stack-name">Kafka / Redis</span></div>
+    <div class="stack-item"><span class="stack-icon">☁️</span><span class="stack-name">AWS / GCP / Azure</span></div>
+    <div class="stack-item"><span class="stack-icon">🐳</span><span class="stack-name">Docker / Kubernetes</span></div>
+  </div>
+</section>
+
+<div class="cta-band" style="background:var(--bg3)">
+  <div>
+    <div class="sec-tag">Join Us</div>
+    <h2>Build the Future With Us</h2>
+    <p style="margin-top:.5rem">Operators, enterprises, and technology partners — let's engineer the next generation of telecom infrastructure together.</p>
+  </div>
+  <a href="contact.html" class="btn-p">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand"><a href="index.html" style="text-decoration:none"><span class="foot-logo-text">TELECOM<span>NET</span></span><span class="foot-theme-lbl" id="foot-theme-lbl">🌌 Sci-Fi Dark</span></div><p style="margin-top:.8rem">Telecomnet IT Solutions Pvt Ltd — engineering AI-driven telecom platforms, intelligent VAS solutions, and cloud-native enterprise software for the next generation of operators.</p></div>
+    <div><div class="foot-col-title">Pages</div><ul class="foot-links"><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="foot-col-title">Services</div><ul class="foot-links"><li><a href="services.html">AI-Powered M-VAS</a></li><li><a href="services.html">Conversational AI</a></li><li><a href="services.html">Mobile Engineering</a></li><li><a href="services.html">Cloud Platforms</a></li><li><a href="services.html">Enterprise SaaS</a></li></ul></div>
+    <div><div class="foot-col-title">Contact</div><ul class="foot-links"><li><a href="mailto:marketing@telecomnetsolution.com">marketing@telecomnetsolution.com</a></li><li><a href="https://telecomnetsolutions.co">telecomnetsolutions.co</a></li><li><a href="#">India · Africa Operations</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span class="foot-copy">© 2024 Telecomnet IT Solutions Pvt Ltd — All Rights Reserved</span></div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
