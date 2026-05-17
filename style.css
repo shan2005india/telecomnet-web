@@ -75,14 +75,19 @@ nav{
   background:var(--nav);border-bottom:1px solid var(--border);
   backdrop-filter:blur(18px);transition:background .55s,border-color .4s;
 }
-/* Text Logo */
+/* Logo */
 .nav-logo{
-  font-family:'Orbitron',monospace;font-weight:900;font-size:1.15rem;
-  letter-spacing:.12em;color:var(--a1);text-decoration:none;
+  display:flex;align-items:center;text-decoration:none;
   flex-shrink:0;transition:opacity .2s;
 }
-.nav-logo span{color:var(--a2)}
-.nav-logo:hover{opacity:.8}
+.nav-logo img{
+  height:38px;width:auto;display:block;
+  transition:opacity .2s,filter .35s;
+}
+[data-theme="blueprint"] .nav-logo img{
+  filter:brightness(0) saturate(100%) invert(19%) sepia(72%) saturate(1200%) hue-rotate(210deg) brightness(80%);
+}
+.nav-logo:hover{opacity:.78}
 .foot-logo-text{
   font-family:'Orbitron',monospace;font-weight:900;font-size:.85rem;
   letter-spacing:.12em;color:var(--a1);
