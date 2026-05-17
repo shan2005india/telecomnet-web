@@ -54,11 +54,27 @@
 .stack-icon{font-size:1.6rem;display:block;margin-bottom:.5rem}
 .stack-name{font-family:'Chakra Petch',monospace;font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--muted)}
 
+@media(max-width:1024px){
+  .stack-grid{grid-template-columns:repeat(4,1fr)}
+  .team-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:900px){
   .about-story-grid{grid-template-columns:1fr;gap:2rem}
   .about-vis{height:280px}
-  .stats-row,.stack-grid{grid-template-columns:1fr 1fr}
-  .team-grid,.values-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .stack-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .values-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:1fr 1fr}
+  .about-vis{height:220px}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .stack-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -79,7 +95,19 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <div class="nav-mobile-inner">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html" class="active-link">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mob-cta">Get in Touch</a>
+  </div>
+</div>
 
 <div class="page-header">
   <div class="page-header-grid"></div>
@@ -132,7 +160,7 @@
 
 <!-- MISSION & VALUES -->
 <section>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+  <div class="about-mission-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
     <div>
       <div class="sec-tag">Mission &amp; Vision</div>
       <h2>What Drives Us</h2>

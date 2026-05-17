@@ -43,8 +43,22 @@
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
 .faq-a.open{max-height:200px;padding:0 1.4rem 1.1rem}
 .faq-a p{font-size:.88rem;line-height:1.68}
+@media(max-width:1024px){
+  .contact-grid{gap:2.5rem}
+  .offices-grid{grid-template-columns:1fr 1fr}
+}
 @media(max-width:900px){
-  .contact-grid,.offices-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  .offices-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .offices-grid{grid-template-columns:1fr}
+  .faq-q{font-size:.74rem;padding:.9rem 1.1rem}
+  .faq-a.open{padding:0 1.1rem .9rem}
+}
+@media(max-width:480px){
+  .ci-row{padding:1rem}
+  .map-box{height:160px}
 }
 </style>
 </head>
@@ -65,7 +79,19 @@
     <li><a href="contact.html" class="active-link">Contact</a></li>
   </ul>
   <a href="mailto:marketing@telecomnetsolution.com" class="nav-cta">Email Us</a>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <div class="nav-mobile-inner">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active-link">Contact</a>
+    <a href="mailto:marketing@telecomnetsolution.com" class="mob-cta">Email Us</a>
+  </div>
+</div>
 
 <div class="page-header">
   <div class="page-header-grid"></div>

@@ -53,10 +53,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const lbl = document.getElementById('foot-theme-lbl');
   if(lbl) lbl.textContent = THEME_SHORT[THEMES[currentIdx]];
 
-  // Theme switching via dots only (logo is just a link)
-
-  // Dot buttons
+  // Theme dots
   document.querySelectorAll('.tdot').forEach(d => d.addEventListener('click', ()=> applyTheme(d.dataset.t)));
+
+  // Hamburger menu
+  const burger = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('navMobile');
+  if(burger && mobileNav){
+    burger.addEventListener('click', ()=>{
+      const open = mobileNav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+    });
+    // Close on outside click
+    document.addEventListener('click', e=>{
+      if(!burger.contains(e.target) && !mobileNav.contains(e.target)){
+        mobileNav.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', false);
+      }
+    });
+    // Close on nav link click
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+      mobileNav.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+    }));
+  }
 
   initCanvas(THEMES[currentIdx]);
 });
